@@ -1,15 +1,23 @@
 #include <iostream>
 using namespace std;
 //the logic around the data is known as contract of a class
-struct SavingsAccount
+class SavingsAccount
 {
-    private: 
+    int accountNumber;
+    string accountHolder;
     float bankBalance;
     
     public:
+
+    void setSavingsAccount(int acno, string holder, float balance) {
+        cout<<"\nSetting initial savings account details....";
+        accountNumber=acno;
+        accountHolder=holder;
+        bankBalance=balance;
+    }
     void withdraw(float amountToWithdraw) {
         if(amountToWithdraw<(bankBalance-5000)) {
-            cout<<"\nWithdrawing "<<bankBalance;
+            cout<<"\nWithdrawing "<<amountToWithdraw;
             bankBalance-=amountToWithdraw;
         }
         else {
@@ -26,14 +34,17 @@ struct SavingsAccount
         }
     }
     void printBalance() {
-        cout<<"\nBank Balance  : "<<bankBalance;
+        cout<<"\nBank Acno    : "<<accountNumber;
+        cout<<"\nBank Holder  : "<<accountHolder;
+        cout<<"\nBank Balance : "<<bankBalance<<endl;
     }
 };
 int main()
 {
     cout << "Begin\n " << std::endl;
     SavingsAccount savingsAccount;
-    //savingsAccount.bankBalance=50000;
+    savingsAccount.setSavingsAccount(101,"Jack",50000);
+    savingsAccount.printBalance();
     savingsAccount.deposit(45000);
     savingsAccount.printBalance();
     savingsAccount.withdraw(7000);
