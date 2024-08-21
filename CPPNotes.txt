@@ -1,0 +1,106 @@
+
+
+
+	CPP
+
+	C++ programming language
+
+			Bjarne Stroustup
+			1980
+
+	
+	1st Gen Assembly Machine
+	|
+	C
+	Fortan
+	PASCAL
+	| 2nd Gen
+	POPS = Procedure oriented programming system
+
+		top to bottom approach
+
+		
+			procedure <-- data
+
+			int global1=190;
+
+			void withdraw() { }
+			int global2=290;
+			void deposit() { }
+			int global3=390;
+			void fun() {}
+			void foo() { }
+			main()
+			{
+				int local1=190;
+			}
+			
+		
+
+	C++
+	3rd Gen
+	OOPS = Object oriented programming system
+
+			struct SavingsAccount 
+			{ <-- starting point
+				int global1=190;
+					+
+				void withdraw() { }
+				void deposit() { }
+			}; <-- ending point
+
+			void fun() {}
+			void foo() { }
+
+			main()
+			{
+				int local1=190;
+			}
+			
+	Java
+	4th Gen 
+
+
+
+
+	C				C++
+	|				|
+	int i				int i
+
+	struct SavingsAccount {		struct SavingsAccount {
+		int balance;			private: int balance;
+		void withdraw(){} X		public: void deposit(){ }
+	}				} 
+					default access specifiers is public
+
+					SavingsAccount sa;
+					sa.balance=9820443464
+
+					class SavingsAccount {
+						int balance;
+						public:
+						void deposit(int b) {
+							balance = b;
+						}
+					};
+					SavingsAccount sa;
+					sa.balance=9020443464; <-- not allowed
+					sa.deposit(5000); // <-- not allowed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
