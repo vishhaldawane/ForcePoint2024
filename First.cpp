@@ -5,28 +5,45 @@
 
 using namespace std;
 //the logic around the data is known as contract of a class
-class Student
-{
- // here is an invisible ctor , known as 1.'default ctor'
- // also knonw as 2.'implicit no-arg ctor'.
-};
 
-class BankException : exception //a child of exception
-{
-  
+
+class BankException {
+    string message;
     int errorCode;
-
     public:
-    BankException(string msg, int code) {
-        //message = msg;
-       // realMsg =
-       // errorCode = code;
+    BankException(string msg, int error) {
+        message = msg;
+        errorCode = error;
     }
-    const char* what()   
-    {
-        return "Some Problem";//+" "+to_string(errorCode);
+    virtual string getMessage() {
+        return message;
+    }
+
+};
+class NegativeAccountNumberException : public BankException
+{
+    public:
+    NegativeAccountNumberException(string message, int error) : BankException(message,error) {
+
+    }
+
+};
+class InvalidNameException  : public BankException
+{
+    public:
+    InvalidNameException(string message, int error) : BankException(message,error) {
+
     }
 };
+
+class InvalidAccountOpeningBalanceException : public BankException
+{
+    public:
+    InvalidAccountOpeningBalanceException(string message, int error) : BankException(message,error) {
+
+    }
+};
+
 
 class Employee
 {
@@ -62,7 +79,7 @@ class SavingsAccount
         //ACNO
         if(acno<0) {
             //cout<<"\nNegative account number disallowed....";
-            throw new BankException("Account Number cannot be in negative....",NEGATIVE_ACCOUNT_NUMBER);// as if an exception to be thrown... from here
+            throw NegativeAccountNumberException("Invalid account number, it cannot be in negative",-1);// as if an exception to be thrown... from here
         }
         else
             accountNumber=acno;
@@ -81,7 +98,7 @@ class SavingsAccount
             }
         }
         if(found==false) {
-            throw new BankException("Account holder must contain alphabets...",INVALID_ACCOUNT_HOLDER_NAME);
+            throw InvalidNameException("Account holder can only have alphabets",-2);
         }
         else {
             cout<<"\nsetting the holder..";
@@ -90,7 +107,7 @@ class SavingsAccount
 
         //BALANCE
         if(initialBalance<5000) {
-            throw new BankException("Opening Balance must be 5000 INR",INVALID_OPENING_BALANCE);
+            throw InvalidAccountOpeningBalanceException("Opening balance cannot be lesser than 5000 INR",-3);
         }
         else
             bankBalance=initialBalance;
@@ -163,14 +180,20 @@ int main()
         savingsAccount.withdraw(7000);
         savingsAccount.printBalance();
     }
-    catch(BankException &ref)
+    catch(NegativeAccountNumberException &ref)
     {
-        cout<<"CAUGHT HERE ";
-        std::cerr << ref.what() << '\n';
+        cout<<"\nCAUGHT HERE1 "<<ref.getMessage();
+        //std::cerr << ref.what() << '\n';
     }
-    
-    
-    
-   
+    catch(InvalidAccountOpeningBalanceException &ref)
+    {
+        cout<<"\nCAUGHT HERE2 "<<ref.getMessage();
+        //std::cerr << ref.what() << '\n';
+    }
+    catch(InvalidNameException &ref)
+    {
+        cout<<"\nCAUGHT HERE3 "<<ref.getMessage();
+        //std::cerr << ref.what() << '\n';
+    }
     cout << "End\n " << std::endl;
 }

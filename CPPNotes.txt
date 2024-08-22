@@ -89,6 +89,110 @@
 
 
 
+OOPS concepts
+----------------
+	
+	1. Abstraction
+		it is the "what is?" part of an object
+		what is an ATM?
+
+		realtime entity in the computer memory 
+		identified by its primary key
+
+
+		hiding the complexity of an object
+
+		focus on the working functionality of it
+
+	
+			- data
+			- procedure
+			- internal structure 
+	2. Encapsulation
+		it is the "how is it?" part of an object
+		how the ATM is functioning ?
+
+	3. Polymorphism
+
+	4. Inheritance
+
+	5. Object communication
+
+
+
+	class			vs		object
+	|					|
+	design of an object		instance of a class
+
+	blue print of a house		the actual house(s)
+
+	logical				physical
+
+		------------------------->
+	thoughtfull			vscode, notepad, msvs
+		emotions		eclipse, vi
+
+	class SavingsAccount {		SavingsAccount saObj;
+		data
+		+
+		functions
+	}
+	class Fruit			Fruit mango;
+	{				Fruit apple;
+		string color;		Fruit jackfruit;
+		string taste;		Fruit orange;
+		float weight;
+		boolean ripe;
+		float cost;
+		set/get/print
+	};
+
+				    color  taste  weight  ripe
+		+------------------> yellow sweet 250.4   true
+		|
+		mango
+
+					set/get/print
+
+
+				    color  taste  weight  ripe
+		+------------------> red   sweet  150.4   false
+		|
+		apple
+
+				    color  	taste  weight  ripe
+		+------------------> paleyellow sweet  2250    true
+		|
+		jackfruit	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

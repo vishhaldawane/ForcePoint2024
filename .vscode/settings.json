@@ -2,6 +2,7 @@
     "git.ignoreLimitWarning": true,
     "files.associations": {
         "iosfwd": "cpp",
-        "exception": "cpp"
+        "exception": "cpp",
+        "stdexcept": "cpp"
     }
 }
