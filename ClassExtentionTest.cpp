@@ -2,21 +2,14 @@
 using namespace std;
 
 class Doctor {
-    FILE *fp;
-
+    int x;
     public:
-    Doctor() {
-        cout<<"\nDoctor ctor...opening file...";
-        fp = fopen("abc.txt","r");
-    }
+   
     void readFile() {
             cout<<"\nReading the file in a loop...";
     }
-    ~Doctor() {
-        cout<<"\nDoctor dtor...closing the file...";
-        fclose(fp);
-    }
-    void diagnose() { //1. exclusive (may become 2.inherited)
+   
+     void diagnose() { //1. exclusive (may become 2.inherited)
         cout<<"\nDoctor is diagnosing....checking ENT..";
     }
 };
@@ -26,7 +19,7 @@ class Doctor {
 //4. implemented functions
 
 class Surgeon : public Doctor {
-
+    int y;
     void cut() {
         cout<<"\nSurgeon is Cutting...";
     }
@@ -35,12 +28,7 @@ class Surgeon : public Doctor {
     }
     
     public:
-        Surgeon() {
-            cout<<"\nSurgeon ctor invoked...";
-        }
-        ~Surgeon() {
-            cout<<"\nSurgeon dtor invoked...";
-        }
+        
 
         void diagnose() { //1. exclusive (may become 2.inherited)
             cout<<"\nSurgeon is diagnosing....checking CT Scan report....";
@@ -53,7 +41,7 @@ class Surgeon : public Doctor {
 };
 
 class HeartSurgeon : public Surgeon {
-
+    int z;
     void cut() {
         cout<<"\nHeartSurgeon is Cutting...on the chest...";
     }
@@ -62,15 +50,10 @@ class HeartSurgeon : public Surgeon {
     }
     
     public:
-        HeartSurgeon() {
-            cout<<"\nHeartSurgeon ctor invoked...";
-        }
-        ~HeartSurgeon() {
-            cout<<"\nHeartSurgeon dtor invoked...";
-        }
+        
 
         void diagnose() { //1. exclusive (may become 2.inherited)
-            cout<<"\nHeartSurgeon is diagnosing....checking ECG  report....";
+            cout<<"\nHeartSurgeon is diagnosing....checking ECG report....";
         }
         void doSurgery() {
             cut();
@@ -85,22 +68,31 @@ class HeartSurgeon : public Surgeon {
 };
 int main() {
 
-    { //scope started
-         Doctor doctorObj1;
-         doctorObj1.diagnose();
-    }
-    cout<<"\n-------------------------";  
-    {
-        Surgeon surgeonObj; 
-        surgeonObj.diagnose();
-    }
-    cout<<"\n-------------------------";
+    Doctor *ptr;
 
-    {
-        HeartSurgeon heartSurgeon;
-        heartSurgeon.diagnose();
-    } //scope over
+    Doctor doctor;
+  //  doctor.diagnose();
+    cout<<"\nsize of doctor : "<<sizeof(doctor);
+    ptr = &doctor; //pointer to an object
+    ptr->diagnose(); //invoke the object methods via the pointer
 
+    cout<<"\n------------------";
 
+    Surgeon surgeon;
+  //  surgeon.diagnose();
+    cout<<"\nsize of surgeon : "<<sizeof(surgeon);
+
+    ptr = &surgeon;
+    ptr->diagnose();
+
+    cout<<"\n------------------";
+
+    HeartSurgeon heartSurgeon;
+    cout<<"\nsize of heart surgeon : "<<sizeof(heartSurgeon);
+
+    //heartSurgeon.diagnose();
+    
+    ptr = &heartSurgeon;
+    ptr->diagnose();
     return 0;
 }

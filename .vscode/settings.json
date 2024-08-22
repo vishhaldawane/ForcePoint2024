@@ -3,6 +3,7 @@
     "files.associations": {
         "iosfwd": "cpp",
         "exception": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "iostream": "cpp"
     }
 }
