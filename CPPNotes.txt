@@ -146,12 +146,20 @@ OOPS concepts
 
 		b. class extention
 				Doctor
-				|
+				|diagnose() ENT
 			-------------
 			|
 			Surgeon
-			|
+			|diagnose() CT
 		HeartSurgeon
+			|diagnose() ECG 
+
+		c. function overriding
+			- let derive class redefine the function of its
+			parent ( by declaring it as virtual )
+
+			virtual void dianose() { }
+
 
 
 	4. Inheritance
@@ -235,6 +243,25 @@ OOPS concepts
 
 
 
+		compile time binding | early bindingg
+		-----------------------
+		doctor.diagnose();
+		surgeon.diagnose();
+		heartSurgeon.diagnose();
+
+		--------------------------
+		run time binding- late binding
+
+	Doctor *ptr;
+	
+		ptr=&doctor;
+	ptr->diagnose();
+	
+		ptr = &surgeon();
+	ptr->diagnose();
+
+		ptr = &heartSurgeon;
+	ptr->diagnose();
 
 
 
