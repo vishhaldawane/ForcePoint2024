@@ -105,14 +105,36 @@ OOPS concepts
 		focus on the working functionality of it
 
 	
-			- data
-			- procedure
-			- internal structure 
+			- data hidden
+			- procedure hidden
+			- internal structure hidden
+
+ 
 	2. Encapsulation
 		it is the "how is it?" part of an object
+
 		how the ATM is functioning ?
 
+			- data encapsulation
+				- private data
+			- bind the data with concerned functions
+
+
+	
+
+
+
 	3. Polymorphism
+
+		ability to business entity to have many forms
+
+		a. function overloading
+			 - define multiple function with same name
+				but differentiated based on 
+			i) data type
+			ii) number of arguments
+			iii) sequence of type of arguments
+		b. 
 
 	4. Inheritance
 
