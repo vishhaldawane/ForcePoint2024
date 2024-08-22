@@ -1,3 +1,12 @@
+#include <iostream>
+using namespace std;
+
+
+int main() {
+
+    return 0;
+}
+
 
 
 
@@ -134,9 +143,22 @@ OOPS concepts
 			i) data type
 			ii) number of arguments
 			iii) sequence of type of arguments
-		b. 
+
+		b. class extention
+				Doctor
+				|
+			-------------
+			|
+			Surgeon
+			|
+		HeartSurgeon
+
 
 	4. Inheritance
+
+
+
+
 
 	5. Object communication
 
