@@ -72,23 +72,26 @@ class OperationTheatre
     public: //dynamic method dispatch 
     static void perform(Doctor *ptr) {
         cout<<"\nOT perform started......";
-        if(typeid(*ptr) == typeid(HeartSurgeon)) {
-            cout<<"\nITS HEARTSURGEON";
+
+        if (typeid(*ptr) == typeid(Doctor)) {
+            cout<<"\nITS DOCTOR";
             ptr->diagnose();
-            HeartSurgeon *heartSurgeon = (HeartSurgeon*) ptr;
-            heartSurgeon->doSurgery();
-            heartSurgeon->doHeartSurgery();
-        }
+        } 
         else if(typeid(*ptr) == typeid(Surgeon)) {
             cout<<"\nITS SURGEON";
             ptr->diagnose();
             Surgeon *surgeon = (Surgeon*) ptr;
             surgeon->doSurgery();
         }
-        else {
-            cout<<"\nITS DOCTOR";
+        else if(typeid(*ptr) == typeid(HeartSurgeon)) {
+            cout<<"\nITS HEARTSURGEON";
             ptr->diagnose();
-        } 
+            HeartSurgeon *heartSurgeon = (HeartSurgeon*) ptr;
+            heartSurgeon->doSurgery();
+            heartSurgeon->doHeartSurgery();
+        }
+       
+      
         
         cout<<"\nOT perform over.........";
     }
@@ -129,6 +132,6 @@ int main() {
     
 */
 
-    OperationTheatre::perform(&heartSurgeon);
+    OperationTheatre::perform(&surgeon);
     return 0;
 }
