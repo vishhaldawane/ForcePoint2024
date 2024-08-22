@@ -9,7 +9,7 @@ class Doctor {
             cout<<"\nReading the file in a loop...";
     }
    
-     void diagnose() { //1. exclusive (may become 2.inherited)
+    virtual void diagnose() { //1. exclusive (may become 2.inherited)
         cout<<"\nDoctor is diagnosing....checking ENT..";
     }
 };
@@ -66,13 +66,45 @@ class HeartSurgeon : public Surgeon {
             stitch();
         }
 };
+
+class OperationTheatre
+{
+    public: //dynamic method dispatch 
+    static void perform(Doctor *ptr) {
+        cout<<"\nOT perform started......";
+        if(typeid(*ptr) == typeid(HeartSurgeon)) {
+            cout<<"\nITS HEARTSURGEON";
+            ptr->diagnose();
+            HeartSurgeon *heartSurgeon = (HeartSurgeon*) ptr;
+            heartSurgeon->doSurgery();
+            heartSurgeon->doHeartSurgery();
+        }
+        else if(typeid(*ptr) == typeid(Surgeon)) {
+            cout<<"\nITS SURGEON";
+            ptr->diagnose();
+            Surgeon *surgeon = (Surgeon*) ptr;
+            surgeon->doSurgery();
+        }
+        else {
+            cout<<"\nITS DOCTOR";
+            ptr->diagnose();
+        } 
+        
+        cout<<"\nOT perform over.........";
+    }
+};
+
+
 int main() {
 
     Doctor *ptr;
 
     Doctor doctor;
+    Surgeon surgeon;
+    HeartSurgeon heartSurgeon;
+
   //  doctor.diagnose();
-    cout<<"\nsize of doctor : "<<sizeof(doctor);
+   /* cout<<"\nsize of doctor : "<<sizeof(doctor);
     ptr = &doctor; //pointer to an object
     ptr->diagnose(); //invoke the object methods via the pointer
 
@@ -94,5 +126,9 @@ int main() {
     
     ptr = &heartSurgeon;
     ptr->diagnose();
+    
+*/
+
+    OperationTheatre::perform(&heartSurgeon);
     return 0;
 }
