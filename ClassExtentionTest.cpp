@@ -52,26 +52,55 @@ class Surgeon : public Doctor {
         }
 };
 
+class HeartSurgeon : public Surgeon {
+
+    void cut() {
+        cout<<"\nHeartSurgeon is Cutting...on the chest...";
+    }
+    void stitch() {
+        cout<<"\nHeartSurgeon is Stitching.....on the chest....";
+    }
+    
+    public:
+        HeartSurgeon() {
+            cout<<"\nHeartSurgeon ctor invoked...";
+        }
+        ~HeartSurgeon() {
+            cout<<"\nHeartSurgeon dtor invoked...";
+        }
+
+        void diagnose() { //1. exclusive (may become 2.inherited)
+            cout<<"\nHeartSurgeon is diagnosing....checking ECG  report....";
+        }
+        void doSurgery() {
+            cut();
+            cout<<"\nDoing the surgery...";
+            stitch();
+        }
+        void doHeartSurgery() {
+            cut();
+            cout<<"\nDoing the HEART surgery...";
+            stitch();
+        }
+};
 int main() {
 
     { //scope started
-        cout<<"\nScope started....";
-        // Doctor doctorObj1;
-        // Doctor doctorObj2;
-        // Doctor doctorObj3;
-        
-        // doctorObj1.readFile();
-        // doctorObj2.readFile();
-        // doctorObj3.readFile();
+         Doctor doctorObj1;
+         doctorObj1.diagnose();
+    }
+    cout<<"\n-------------------------";  
+    {
+        Surgeon surgeonObj; 
+        surgeonObj.diagnose();
+    }
+    cout<<"\n-------------------------";
 
-        Surgeon surgeonObj;
-      //  surgeonObj.diagnose();
-        //surgeonObj.doSurgery();
-    
-
+    {
+        HeartSurgeon heartSurgeon;
+        heartSurgeon.diagnose();
     } //scope over
 
-    cout<<"\nScope is over...";
 
     return 0;
 }
