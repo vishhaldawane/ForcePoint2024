@@ -129,6 +129,36 @@ class Cloth{
     }
 
 };
+class Laundry
+{
+    float waterBill;
+    float detergentBill;
+    float electricityBill;
+    float ironingCost;
+    float paperCostForPacking;
+    float total;
+    void calculate() {
+        total = waterBill + detergentBill + electricityBill + ironingCost+paperCostForPacking;
+    }
+    public:
+        void setLaundry(float wb, float db, float eb, float ic, float pcfp) {
+             waterBill=wb;
+             detergentBill=db;
+             electricityBill=eb;
+             ironingCost=ic;
+             paperCostForPacking=pcfp;
+             calculate();
+        }
+        
+        void showLaundry() {
+            cout<<"\nWater bill     : "<<waterBill;
+            cout<<"\nDetergent bill : "<<detergentBill;
+            cout<<"\nPower bill     : "<<electricityBill;
+            cout<<"\nIroning bill   : "<<ironingCost;
+            cout<<"\n------Total----: "<<total;
+        }
+
+};
 class WashingMachine : public Machine{ //isA
         WashingTub washTub; //hasA
         string brand;
@@ -138,7 +168,7 @@ class WashingMachine : public Machine{ //isA
             washTub.setWashingTub(cap,rpm,type);
         }
     public:
-        void wash(WashingPowder washPowder, Electricity electricity, 
+        Laundry wash(WashingPowder washPowder, Electricity electricity, 
                 Water water, Cloth cloth) { 
             cout<<"\nBrand : "<<brand;
             Machine::printMachine();
@@ -147,6 +177,10 @@ class WashingMachine : public Machine{ //isA
             electricity.printElectricity();
             water.printWater();
             cloth.printCloth();
+
+            Laundry laundry;
+            laundry.setLaundry(20,20,10,7,3);
+            return laundry;
         }   
     private: void rinse() { }
     private: void spin() { }
@@ -175,7 +209,10 @@ int main() {
     cloth.setCloth("Cotton","Shirt", 250, false);  
 
     WashingMachine  machine(101,"Samsung",50,500,"Steel Tub");
-    machine.wash(washPowder, electricity, water, cloth);
+    Laundry theLaundry = machine.wash(washPowder, 
+                            electricity, water, cloth);
+    cout<<"\n------after wash-----\n";    
+    theLaundry.showLaundry();
     return 0;
 }
 //
