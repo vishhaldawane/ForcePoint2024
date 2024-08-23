@@ -41,7 +41,7 @@ class WashingTub : public Tub {
         }
 };
 
-class WashingMachine : public {//isA
+class WashingMachine : public Machine{ //isA
         WashingTub washTub; //hasA
         string brand;
     public:
