@@ -265,15 +265,119 @@ OOPS concepts
 
 
 
+			Association
+				|
+		--------------------------------
+		|	|	|	|
+		isA	hasA	usesA	producesA
+		<-structural->  <-- functional--->
+
+ENTERPRISE APPLICATION FEATURES
+
+1. network logic
+2. high availability logic
+3. threading
+4. pooling
+5. caching
+6. transaction
+7. security
+
+	class Machine
+	{
+
+	}
+	class WashingMachine : public Machine //isA
+	{
+		WashingTub washTub; //hasA
+		WashProgramPanel panel;
+
+		Laundry wash(WashingPowder wp, Water w, 
+			Electricity e, Cloth cloths[])
+		{
+			..for...
+			rinse();
+			Laundry laundry;
+			laundry.setter..(waterbill,powder, elect...)
+			return laundry; // 10+20+20
+		}
+
+		private: void rinse() {
+			..for...
+			spin();
+		}
+		private: void spin(){
+			..for..
+		}
+	}
 
 
 
 
+	class Pen
+	{
+	}
+	class SketchPen : public Pen //isA
+	{
+		
+	}
 
+	class Person
+	{
+	}
+	class SketchPenArtist : public Person //isA
+	{
+		SketchPen thePen; //hasA
 
+		//producesA       usesA     usesA         usesA
+		Drawing   draw(Face face, Background b, Theme theme) {
+		
+			Drawing drawing;
+			drawing.setters.....face, background,theme
+			return drawing;
+		}
 
+	}
+	class Camera { }
+	class VideoCamera : public Camera { }
 
+	class Photographer : public Person //isA
+	{
+		Camera camera; // hasA
 
+		Photo click(Face face,Scene scene) {
+			..
+			..
+			Photo photo;
+			photo.setters for face, scene....
+			return photo;
+		}
+	}
+	class Cinematographer : public Photographer //hasA
+	{
+		VideoCamera vidCamera; //hasA
+
+		VideoClip shooting(Motion m, MovingEntities me) {
+			
+			VideoClip clip;
+			click(f,s);
+			clip.setters for m, me;
+			return clip;
+		}
+	}
+
+	class Magician : public Person //isA
+	{
+		MagicWand theWand; //hasA
+		Tricks trick1, trick2......100s...
+		
+		Magic scientificTrick(Curtain curtain, Board board) {
+			Magic magic;
+			return magic;
+		}
+	}
+	class HatMagician : public Magician
+	{
+	}
 
 
 
