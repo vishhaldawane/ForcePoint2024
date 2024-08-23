@@ -108,6 +108,27 @@ class Water{
         }
 };
 
+class Cloth{
+    public:
+    string type; //cotton
+    float weight; //250gm
+    string color; 
+    bool isClean; //false
+    void setCloth(string t, string col, float w, bool isCl) {
+        type=t;
+        weight=w;
+        color=col;
+        isClean = isCl;
+    }
+    void printCloth() {
+        cout<<"\nCloth Type    : "<<type;
+        cout<<"\nCloth Color   : "<<color;
+        cout<<"\nCloth Weight  : "<<weight;
+        cout<<"\nCloth isClean : "<<isClean;
+        
+    }
+
+};
 class WashingMachine : public Machine{ //isA
         WashingTub washTub; //hasA
         string brand;
@@ -117,13 +138,15 @@ class WashingMachine : public Machine{ //isA
             washTub.setWashingTub(cap,rpm,type);
         }
     public:
-        void wash(WashingPowder washPowder, Electricity electricity, Water water) { 
+        void wash(WashingPowder washPowder, Electricity electricity, 
+                Water water, Cloth cloth) { 
             cout<<"\nBrand : "<<brand;
             Machine::printMachine();
             washTub.printWashingTub();
             washPowder.printWashingPowder();
             electricity.printElectricity();
             water.printWater();
+            cloth.printCloth();
         }   
     private: void rinse() { }
     private: void spin() { }
@@ -133,7 +156,7 @@ class WashingMachine : public Machine{ //isA
 /*---------------------------*/
 
 /*---------------------------*/
-class Cloth{};
+
 
 
 int main() {
@@ -147,8 +170,12 @@ int main() {
 
     Water water;
     water.setWater(40);//ltrs
+    
+    Cloth cloth;
+    cloth.setCloth("Cotton","Shirt", 250, false);  
+
     WashingMachine  machine(101,"Samsung",50,500,"Steel Tub");
-    machine.wash(washPowder, electricity, water);
+    machine.wash(washPowder, electricity, water, cloth);
     return 0;
 }
 //
