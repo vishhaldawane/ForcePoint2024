@@ -48,7 +48,10 @@ class Powder{
     private:
         int quantity;
     public:
-        Powder(int q) { quantity=q; }
+        Powder(int q) 
+        { 
+            quantity=q;
+        }
         void setPowder(int q) {
             quantity=q;
         }
@@ -73,6 +76,38 @@ class WashingPowder : public Powder {
         }
  };
 
+class Power { 
+    string provider;
+    public:
+        void setPower(string pro) {
+            provider = pro;
+        }
+        void printPower() {
+            cout<<"\nPower Provider : "<<provider;
+        }
+};
+class Electricity : public Power {
+    float voltage;
+    public:
+        void setElectricity(float volt) {
+            voltage = volt;
+        }
+        void printElectricity() {
+            Power::printPower();
+            cout<<"\nElectricity Voltage : "<<voltage;
+        }
+};
+class Water{
+    int quantity;
+    public:
+        void setWater(int q) {
+            quantity =q;
+        }
+        void printWater() {
+            cout<<"\nWater : "<<quantity<<" ltrs";
+        }
+};
+
 class WashingMachine : public Machine{ //isA
         WashingTub washTub; //hasA
         string brand;
@@ -82,11 +117,13 @@ class WashingMachine : public Machine{ //isA
             washTub.setWashingTub(cap,rpm,type);
         }
     public:
-        void wash(WashingPowder washPowder) { 
+        void wash(WashingPowder washPowder, Electricity electricity, Water water) { 
             cout<<"\nBrand : "<<brand;
             Machine::printMachine();
             washTub.printWashingTub();
             washPowder.printWashingPowder();
+            electricity.printElectricity();
+            water.printWater();
         }   
     private: void rinse() { }
     private: void spin() { }
@@ -94,18 +131,24 @@ class WashingMachine : public Machine{ //isA
 /*---------------------------*/
 
 /*---------------------------*/
-class Power { };
-class Electricity : public Power { };
+
 /*---------------------------*/
 class Cloth{};
-class Water{};
+
 
 int main() {
 
     WashingPowder washPowder(50);
     washPowder.setWashingPowder("Ariel");
+
+    Electricity electricity;
+    electricity.setPower("Tata Power");
+    electricity.setElectricity(220.0f);
+
+    Water water;
+    water.setWater(40);//ltrs
     WashingMachine  machine(101,"Samsung",50,500,"Steel Tub");
-    machine.wash(washPowder);
+    machine.wash(washPowder, electricity, water);
     return 0;
 }
 //
