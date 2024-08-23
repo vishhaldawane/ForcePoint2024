@@ -41,6 +41,38 @@ class WashingTub : public Tub {
         }
 };
 
+//class Powder;
+//class WashingPowder; //forward declaration of the class
+
+class Powder{
+    private:
+        int quantity;
+    public:
+        Powder(int q) { quantity=q; }
+        void setPowder(int q) {
+            quantity=q;
+        }
+        void printPowder() {
+            cout<<"\nPowder qty : "<<quantity;
+        }
+};
+class WashingPowder : public Powder {
+    private:
+        string brand;
+    public:
+        WashingPowder(int q):Powder(q) {
+
+        }
+
+        void setWashingPowder(string b) {
+            brand=b;
+        }
+        void printWashingPowder() {
+            Powder::printPowder();
+            cout<<"\nBrand : "<<brand;
+        }
+ };
+
 class WashingMachine : public Machine{ //isA
         WashingTub washTub; //hasA
         string brand;
@@ -50,17 +82,17 @@ class WashingMachine : public Machine{ //isA
             washTub.setWashingTub(cap,rpm,type);
         }
     public:
-        void wash() { 
+        void wash(WashingPowder washPowder) { 
             cout<<"\nBrand : "<<brand;
             Machine::printMachine();
             washTub.printWashingTub();
+            washPowder.printWashingPowder();
         }   
     private: void rinse() { }
     private: void spin() { }
 }; //isA
 /*---------------------------*/
-class Powder{};
-class WashingPowder : public Powder { };
+
 /*---------------------------*/
 class Power { };
 class Electricity : public Power { };
@@ -70,7 +102,10 @@ class Water{};
 
 int main() {
 
+    WashingPowder washPowder(50);
+    washPowder.setWashingPowder("Ariel");
     WashingMachine  machine(101,"Samsung",50,500,"Steel Tub");
-    machine.wash();
+    machine.wash(washPowder);
     return 0;
 }
+//
