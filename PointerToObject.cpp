@@ -136,4 +136,11 @@ int main() {
     
     cout<<"\nsize of ms "<<sizeof(students);
 
+    cout<<"\n--------via pointer to an array -----";    studentPtr = students;  //name of the array
+    //is the address itself
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        studentPtr->showStudent();
+    }
 }
