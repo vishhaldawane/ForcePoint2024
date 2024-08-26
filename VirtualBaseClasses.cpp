@@ -60,7 +60,8 @@ class Mammal : public virtual Animal  {
             cout<<"\nMammal is breathing....";
         }
 };
-
+//class Fish : public virutal  Animal
+//class SwimmingMammal : public Fish, public Mammal {};
 
 class FlyingMammal : public Bird, public Mammal {
     public:
