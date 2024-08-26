@@ -4,9 +4,7 @@ int main() {
     int rajesh=190;
     int *ptr=&rajesh;
     int &raj = rajesh;
-
     
-
     printf("\nvalue of rajesh : %d",rajesh); //190
     printf("\nvalue of raj    : %d",raj); //190
 

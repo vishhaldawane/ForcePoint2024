@@ -106,8 +106,15 @@ int main() {
     Student student1(101,"Chandrashekhar Purushottam Aazaad");
     student1.showStudent();
 
-    Student *studentPtr;
-    studentPtr = &student1;
+    Student *studentPtr; //occupying 8 bytes
+    studentPtr = &student1; //rajesh
+
+    //raj
+    Student &ref = student1;
+    printf("\n=> student1 stored at %ld",&student1);
+    printf("\n=> ref      stored at %ld",&ref);
+    printf("\n=> studentPtr      stored at %ld",&studentPtr);
+
 
     cout<<"\nstudent1   size : "<<sizeof(student1);
     cout<<"\nstudentPtr size : "<<sizeof(studentPtr);
