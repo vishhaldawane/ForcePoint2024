@@ -11,7 +11,7 @@ class Student
     float percentage;
     char grade;
     public:
-        Student(int roll, string sn, char g, int a, float per, char gr) {
+        Student(int roll=100, string sn="NONAME", char g='F', int a=18, float per=80.0, char gr='A') {
              rollNumber=roll;
              studentName=sn;
              gender=g;
@@ -22,12 +22,34 @@ class Student
         void showStudent() {
             cout<<"\nROLL   :"<<rollNumber;
             cout<<"\nNAME   :"<<studentName;
+            cout<<"\nsizeof name : "<<sizeof(studentName);
+            cout<<"\nlength of  name : "<<studentName.length();
+            
             cout<<"\nGENDER :"<<gender;
             cout<<"\nAGE    :"<<age;
             cout<<"\nPER    :"<<percentage;
             cout<<"\nGRADE  :"<<grade;
             cout<<"\n--------------------\n";
         }
+};
+// MyString ms("Chandrashekhar");
+
+class MyString
+{
+    char *str;
+    int len;
+    public:
+    MyString(char *ptr) {
+        str=(char*) malloc(strlen(ptr)+1);
+        strcpy(str,ptr);
+        len = strlen(str);
+    }
+    char* toString() {
+        return str;
+    }
+    int length() {
+        return len;
+    }
 };
 int main() {
 //char        int        float       doube
@@ -73,7 +95,7 @@ int main() {
     cout<<"\nptr size : "<<sizeof(ptr);
 
 
-    Student student1(101,"Jack",'M',23,92.44,'A');
+    Student student1(101,"Chandrashekhar Purushottam Aazaad");
     student1.showStudent();
 
     Student *studentPtr;
@@ -85,5 +107,10 @@ int main() {
     studentPtr->showStudent();
     (*studentPtr).showStudent();
 
+    MyString ms("Chandrashekhar PurushottamSingh Azaad");
+    cout<<"\nms : "<<ms.toString();
+    cout<<"\nlength is : "<<ms.length();
     
+    cout<<"\nsize of ms "<<sizeof(ms);
+
 }

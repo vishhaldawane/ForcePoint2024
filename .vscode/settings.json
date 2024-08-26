@@ -5,6 +5,7 @@
         "exception": "cpp",
         "stdexcept": "cpp",
         "iostream": "cpp",
-        "__locale": "cpp"
+        "__locale": "cpp",
+        "string": "cpp"
     }
 }
