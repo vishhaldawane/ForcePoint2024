@@ -4,6 +4,7 @@
         "iosfwd": "cpp",
         "exception": "cpp",
         "stdexcept": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "__locale": "cpp"
     }
 }
