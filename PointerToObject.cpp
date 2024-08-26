@@ -33,11 +33,13 @@ int main() {
         value       190         64240 <--developer  
         address     64240       64390 <--system
 */
+    cout<<"\n---- with num now -----";
+
     cout<<"\nnum is : "<<num;
     cout<<"\nnum is : "<<*&num;
     printf("\nnum stored at %ld",&num);
-
-   // cout<<"\nnum is : "<<*ptr;
-   // cout<<"\nptr is : "<<ptr;
+    cout<<"\n---- with pointer now -----";
+    cout<<"\nnum is : "<<*ptr;
+    printf("\nptr is %ld",ptr);
 
 }
