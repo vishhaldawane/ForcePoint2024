@@ -1,6 +1,34 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
+
+class Student
+{
+    int rollNumber;
+    string studentName;
+    char gender;
+    int age;
+    float percentage;
+    char grade;
+    public:
+        Student(int roll, string sn, char g, int a, float per, char gr) {
+             rollNumber=roll;
+             studentName=sn;
+             gender=g;
+             age=a;
+             percentage=per;
+             grade=gr;
+        }
+        void showStudent() {
+            cout<<"\nROLL   :"<<rollNumber;
+            cout<<"\nNAME   :"<<studentName;
+            cout<<"\nGENDER :"<<gender;
+            cout<<"\nAGE    :"<<age;
+            cout<<"\nPER    :"<<percentage;
+            cout<<"\nGRADE  :"<<grade;
+            cout<<"\n--------------------\n";
+        }
+};
 int main() {
 //char        int        float       doube
 // 'A'        123        54.12       32322.33
@@ -41,5 +69,21 @@ int main() {
     cout<<"\n---- with pointer now -----";
     cout<<"\nnum is : "<<*ptr;
     printf("\nptr is %ld",ptr);
+    cout<<"\nnum size : "<<sizeof(num);
+    cout<<"\nptr size : "<<sizeof(ptr);
 
+
+    Student student1(101,"Jack",'M',23,92.44,'A');
+    student1.showStudent();
+
+    Student *studentPtr;
+    studentPtr = &student1;
+
+    cout<<"\nstudent1   size : "<<sizeof(student1);
+    cout<<"\nstudentPtr size : "<<sizeof(studentPtr);
+
+    studentPtr->showStudent();
+    (*studentPtr).showStudent();
+
+    
 }

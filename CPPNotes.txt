@@ -382,4 +382,33 @@ ENTERPRISE APPLICATION FEATURES
 
 
 
+-------------------------------------------
+Agenda
+
+	Pointer to Object
+	Reference Variables
+	Pointer to Array of Object
+	Virtual Base Classes
+		- multiple level inheritance
+	Templates
+		function
+		classes
+	File handling
+		Object serialization process
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
