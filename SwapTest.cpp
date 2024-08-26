@@ -25,29 +25,47 @@ void swap(double &i, double &j) {
     cout<<"\nswapping done...";
 }*/
 
-template <class T> void swapValues(T &i, T &j) {
-    //type_info information = typeid(T);
+template <class T> class Pair {
+    T x;
+    T y;
+
+    public:
     
-    cout<<"\nswapping..T... : "<<typeid(T).name();
-    T temp = i;
-    i = j;
-    j = temp;
-    cout<<"\nswapping done...";
-}
+    Pair(T a, T b) {
+        cout<<"\nPair(T,T) ctor...";
+        x = a;
+        y = b;
+    }
+    void swapValues() {
+        cout<<"\nPair : swapping..T... : "<<typeid(T).name();
+        T temp = x;
+        x = y;
+        y = temp;
+        cout<<"\nswapping done..."; 
+    }
+    void printValues() {
+        cout<<"\nPair : printValues()";
+        cout<<"\nx "<<x;
+        cout<<"\ny "<<y;
+        
+    }
+};
+
 int main() {
 
     double x=10;
     double y=20;
-    cout<<"\nx : "<<x;
-    cout<<"\ny : "<<y;
+   
+    Pair<double> pair1(x,y);
+    pair1.printValues();
+    pair1.swapValues();
+    pair1.printValues();
 
-    swapValues<double>(x,y);
 
-    cout<<"\nx : "<<x;
-    cout<<"\ny : "<<y;
+   
 
     cout<<"\n-----------------";
-
+/*
     int p=100;
     int q=200;
     cout<<"\np : "<<p;
@@ -58,6 +76,7 @@ int main() {
     cout<<"\np : "<<p;
     cout<<"\nq : "<<q;
 
+*/
 
     return 0;
 }
