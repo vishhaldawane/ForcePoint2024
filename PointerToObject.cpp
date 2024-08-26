@@ -19,6 +19,14 @@ class Student
              percentage=per;
              grade=gr;
         }
+        void setStudent(int roll=100, string sn="NONAME", char g='F', int a=18, float per=80.0, char gr='A') {
+             rollNumber=roll;
+             studentName=sn;
+             gender=g;
+             age=a;
+             percentage=per;
+             grade=gr;
+        }
         void showStudent() {
             cout<<"\nROLL   :"<<rollNumber;
             cout<<"\nNAME   :"<<studentName;
@@ -112,5 +120,20 @@ int main() {
     cout<<"\nlength is : "<<ms.length();
     
     cout<<"\nsize of ms "<<sizeof(ms);
+    const int SIZE=5;
+    Student students[SIZE] ;
+    
+    students[0].setStudent(101,"Chandrashekhar",'M',23,90.45,'A');
+    students[1].setStudent(102,"BhagatSingh",'M',21,95.45,'A');
+    students[2].setStudent(103,"Sukhdev",'M',20,92.45,'A');
+    students[3].setStudent(104,"Rajguru",'M',21,93.45,'A');
+    students[4].setStudent(105,"MadanLal",'M',24,95.45,'A');
+   
+    for (int i = 0; i < SIZE; i++)
+    {
+        students[i].showStudent();
+    }
+    
+    cout<<"\nsize of ms "<<sizeof(students);
 
 }
