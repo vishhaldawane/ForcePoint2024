@@ -1,0 +1,383 @@
+
+
+
+			Unix Shell Scripting
+
+
+ Day1 Agenda :
+
+	1. Introduction to Unix/Linux
+	2. The Big picture
+	2.1) features of unix
+	3. Getting around the system
+	4. Basic commands to deal with Files
+	5. Basic commands to deal with directories
+	6. The Vi editor
+	7. File permissions
+
+
+
+			Unix
+
+	UNIplexed computing system
+	|			|
+	single			|
+	machine			|
+		----------------------------------
+		|		|		|
+		hardware	software	peopleware
+		yantra		tantra		mantra
+		|		|		|
+	abundance 		huge set	millions 
+	|			of apps
+	CPU 32/64/128
+	HDD 64/128/256TB
+	MEMORY 64gb
+
+	1,20,000 users
+	in a second
+	on IBM 
+
+
+				SCO-UNIX
+				| SYS III / IV / V
+				| Ken Thompson
+				|
+		-----------------------------------------------------------------
+		|		|		|		|		|
+vendor		IBM		Sun/Oracle	Hp		apple		any
+CPU		blackbox	SunFire/SPARC	hpseries	PowerPc		any
+Os		AIX		Solaris		hp-ux		Macintosh	Linux
+Kernel		Kernel(asm)							|
+Shell		bash(C)	
+		|		uname		uname		uname		uname
+		uname
+		ls		ls		ls		ls		ls
+		
+
+
+	Linus Torvalds 
+
+			redhat		mandrake 	suse/linux
+			|			caldera		..50
+		------------------
+		|		|
+		linux		fedora
+				..
+				..
+				ubuntu
+
+Features of unix
+1. Portable
+2. Multiuser ( it is not a desktop/single user os)
+
+			box
+			|CPU/HDD/RAM
+			|kernel is here
+			|
+		-----------------------------------
+		|nic	|nic	|nic	|nic	|nic
+		|bash	|bash	|bash	|bash	|bash
+		monitor	mon	mon	mon	mon
+		key	key	key	key	key
+		|
+		ls
+3. Mutlitasking
+4. Multiprocessing
+5. Robust
+6. 100% secured
+	rwx
+
+	in windows we cannot disable the executable ness of an executable file
+
+		paint.exe
+
+	chmod -x paint.out
+7. multithreaded
+8. Distributed
+
+
+
+	Unix users
+
+
+	1. Power User
+		known as 'root' user [ administrator in windows ]
+		prompt - #
+		never try to login as root unless u have the password
+		
+	2. End user
+		like any other non-root user
+		prompt - $
+	
+
+uname
+	uname -o
+	uname -k
+	uname -i
+	uname -r
+
+cal
+cal -3
+cal -y
+ncal -M
+ncal -S
+cal 2 2005
+cal 2024
+pwd - print working directory
+touch jupitor - make empty file [ if doent exist ]
+mkdir myfolder 
+rm jupitor [ remove a file ]
+rmdir myfolder [ remove empty folder ]
+date
+date '+%D'
+
+
+
+File related commands
+
+
+	a. create a file
+
+		cat > filename  [ file name must be new one ]
+		data			else it would overwrite
+		data			without prompt
+		data
+		^d
+
+	b. view the content of the file
+
+		cat filename
+
+		
+	c. rename the file
+
+		mv oldname newnamme
+
+	d. move a file
+
+		mv sourcefile  newlocation/
+
+	e. copy a file
+
+		cp sourcefile newcopyName
+		cp sourcefile newLocation/
+
+	f. remove a file
+
+		rm filename
+		
+
+Directories
+--------------
+
+	a. create a directory
+
+		mkdir directoryname
+
+	b. enter into the directory
+
+		cd directoryname
+
+	c. exit one level up
+		
+		cd .. [ with a space ]
+
+	d. remove a directory
+
+		rmdir directoryname [ it must be empty ]
+
+		rm -rf directory [ force remove a directory ]
+				  -r recursive content 
+
+	e. rename a directory
+
+		mv oldname newname
+
+	f. move a directory
+
+		mv directory newLocation/
+
+	g. copy a directory
+
+		cp -r directory newLocation/
+	
+
+				office
+				|
+			-----------------
+			|		|
+			inbox		outbox
+			|		|
+		--------------		-------------------
+		|	    |		|		|
+		bank	  project	vendors		suppliers
+
+
+
+
+	
+Unix file system structure [ internatinal standard structure ]
+
+
+
+				/
+				|
+	-----------------------------------------------------------------------------------
+	|	|	|	|	|	|	|	|	|	|	|
+	bin	usr	sbin	etc	var	opt	tmp	lib	dev	proc	root
+		|
+	-------------
+	|	|
+	bin	sbin
+
+
+1. / <-- root directory
+-----------------------------
+2. /bin		binaries [ executables ]
+3. /sbin	system level [ single user ] binaries
+4. /usr/bin	binaries [ large number ]
+5. /usr/sbin	binaries [ large number ]
+--------------------
+6. /etc		editable text configuration
+7. /var		variable data, logs, mails, spools, jobs
+8. /opt		third party software /opt/java/bin/javac, /opt/oracle/bin/sql
+9. /tmp		dumping ground
+-----------------
+10./lib		libraries [ .so files ] - same as windows DLL
+11./dev		device drivers here
+-----------------
+12. /proc	running processes here
+13. /root	home directory of admin[ root ] user
+14. /home/user	home directories of all end users
+
+
+
+	EXE project	DLL project
+	|		|
+	excel.c		formulas.c
+	|main()	{}	|50 funs
+	--------------------
+	|		|
+	.obj		.obj
+	|		|
+	.exe		.dll
+	|4kb		|1mb
+	run		DOESNT RUN, rather
+	in		it stays on 
+	RAM		HDD
+
+	sum(A10..A30)
+
+
+	OUT project	SO Project
+	|		|
+	excel.c		formulas.c
+	|		|
+	.o		.o
+	|		|
+	.out		.so [ shared object ]
+
+
+
+Vi editor
+--------------
+
+
+	visual editor
+
+	vim = visual improved
+
+
+	$ vi --> open a blank file
+	
+	$ vi abc.txt -> if the file doesnt exists, it would open it as a new one
+
+
+	$ vi pqr.txt -> existing file, then open teh content for editing
+
+
+	vi has various MODES, default mode is the COMMAND MODE
+
+
+	$ vi
+	+---------------> COMMAND MODE
+	|			|
+	|     [aio]------------------[:]------------------
+	|	|		      |
+	|	|		      |
+	Esc	InsertMODE	Last Line/Ex Mode
+	
+
+	$ vi
+
+		1. command mode
+		2. press i -> insert mode
+		3. type data
+		4. press ESC -> command mode
+		5. :w abc.txt [ save as ]
+		6. :q to quit vi
+
+	$ vi pqr.txt
+
+		1. command mode
+		2. press i
+		3. edit/add the lines
+		4. press ESC
+		5. :wq -- write and quit vi
+
+
+	$ vi pqr.txt
+
+		1. command mode
+		2. press i
+		3. edit/add the lines
+		4. press ESC
+		5. :q! -- discard the changes and quit vi
+			
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

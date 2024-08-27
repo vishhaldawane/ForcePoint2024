@@ -386,8 +386,8 @@ ENTERPRISE APPLICATION FEATURES
 Agenda
 
 	Pointer to Object
-	Reference Variables
 	Pointer to Array of Object
+	Reference Variables
 	Virtual Base Classes
 		- multiple level inheritance
 	Templates
