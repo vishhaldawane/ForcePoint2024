@@ -13,7 +13,15 @@
 	4. Basic commands to deal with Files
 	5. Basic commands to deal with directories
 	6. The Vi editor
+
+Day2 Agenda :
+	6. Carry forward the VI editor
 	7. File permissions
+	8. File Links
+		soft and hard link
+	9. Various filters
+		10 filters
+
 
 
 
@@ -335,6 +343,322 @@ Vi editor
 		4. press ESC
 		5. :q! -- discard the changes and quit vi
 			
+	
+	i -- enter into insert mode
+
+	: -- enter into last line mode
+
+	Esc - goback to command mode from any other mode
+
+
+
+
+	:set number - enable line numbers
+	:set nonumber - disable it
+
+	:500
+	:1
+	:$ --- go to the last line
+
+	w - goes to the beginning of every successive word in forward direction
+	e - goes to the end of every successive word in forward direction
+	
+	b - goes to the beginning of every successive word in backward direction
+
+	50w - goes in the foward to the 50th word from the current cursor
+
+	dw - deletes the current word
+	5dw - delete 5 words from the cursor
+
+	dd - delete the current line
+	5dd - delete 5 lines
+
+	u - to undo the last action
+	5u - to undeo last 5 action
+
+		copy			cut
+		|			|
+	char    y			x
+	3chars	3y			3x
+	word	yw			dw
+	3word	3yw			3dw
+	line	yy			dd
+	3 lines	3yy			3dd
+		|			|
+		------------------------
+			   |
+	paste		   p
+     5 time paste         5p
+
+
+
+Search a word
+---------------
+
+		/wordToSearch  - searches a word in forward direction
+
+		?wordToSearch - searches a word in backward direction
+
+		whole word search
+
+		/the <-- searches the word everywhere
+
+		/^the	<-- searches at the start of the line
+
+		/\<the\>
+
+		n - searches the next occurance
+		N - searches the prev occurance
+
+		
+
+		:set hls <-- highlight selection on
+
+Search and Replace
+--------------------
+
+		first decide what to replace
+			and from what region [ line or range of lines ]
+			and first occurence or multiple occurences
+
+
+		:s/a/A
+
+
+		:s means substitute [ replace ]
+		/a -- search string a
+		/A -- to replace with this string
+
+		if line number not given then current line is considered
+		if occurences not given, then only first occurence would be done
+
+
+		:s/a/A -- replace a with A on the current line first occurence
+		:12s/a/A - 12th line, first occurence
+		:12s/a/A/g - 12th line, all occurences
+
+		:5,12s/a/A - replace all a with A from line 5 to 12 first occurence
+		:5,12s/a/A/g - replace all a with A from line 5 to 12 all occurences
+
+
+		:1,$s/a/A   - complete document for the first sccurence
+		:1,$s/a/A/g - complete document for all the occurences
+
+
+
+		:%s/a/A   - complete document for the first sccurence
+		:%s/a/A/g - complete document for all the occurences
+	
+		:%s/a/A/gc 
+			c - confirmation
+
+			y	n	a	q	l
+			|	|	|	|	|
+			do	NO	all	quit	do the current replacement
+							and leave it
+
+			^E ^Y -- to scroll up and down
+			scroll facility is given to discriminate the 
+			replacement decisions based on unseen lines
+
+
+
+	File permissions
+	-------------------
+			Basic security model
+
+	3 types of users
+	-----------------
+	user - owner of the file/directory denoted via - u
+	group - logical collection of trusted user(s) -  g
+	other - neither the user nor the group member -  o
+
+	every user has a primary group
+
+	and a user can belong to multiple secondary groups
+
+	other is risky, any internet user, unknown user
+
+
+	3 types of permissions
+	---------------------
+
+				file			directory
+	===========================================================
+	read(r)			cat file		ls
+				vi file
+	-----------------------------------------------------------
+	write(w)		vi file			cat>, cat>>,
+				cat>>file		vi file, rm,
+				(does not mean		cp, mv, mkdir,
+				rm on it)		rmdir
+	-----------------------------------------------------------
+	execute(x)		run it as a 		cd directory
+				command /script		[ enter into it]
+	-----------------------------------------------------------
+
+	chmod command is used to change the mode of the file/directory
+
+				permissions
+					|
+			-----------------------------------
+			|				|
+			character			octal
+			r				4
+			w				2
+			x				1
+							0
+			----				----
+			rwx				7
+			rw-				6
+			r-x				5
+			--x				1
+			-wx				3
+			---				0
+			flexible			efficient
+			-tune				-overlap
+
+
+		chmod u-r uranus.txt		chmod 4 uranus.txt [ 004 ]
+
+
+
+
+
+
+
+
+	ls -l
+
+
+	-rw-r--r-- 1 user user   0 Aug 28 05:45 2024-08-27-terminal-2.term
+	-rw-r--r-- 1 user user 176 Aug 27 07:25 abc.txt
+	drwxr-xr-x 2 user user   3 Aug 27 05:28 myfolder
+	drwxr-xr-x 2 user user   3 Aug 27 05:33 myfolder2
+	drwxr-xr-x 2 user user   3 Aug 27 05:30 myfolder3
+	drwxr-xr-x 4 user user   8 Aug 28 05:29 office
+	-rw-r--r-- 1 user user  62 Aug 27 07:27 pqr.txt
+	-rw-r--r-- 1 user user 106 Aug 27 05:32 ura.txt
+	-rw-r--r-- 1 user user 106 Aug 27 05:31 uranus.txt
+	-rw-r--r-- 1 user user   0 Aug 27 04:46 venus
+	|||||||||| |    |    |   |    |           |
+	|uuu|||||| link Owner| size mod-time  file/directory
+	|   ggg||| count   group
+	|      ooo	
+	type 
+	of the
+	file
+	- regular file
+	d directory
+	l soft link
+	b block device
+	c character device
+	p socket [ pipe ]
+
+
+	
+
+1. read file
+
+	cat > peter.txt
+		some data
+	^d
+
+	chmod u-r peter.txt
+
+	cat peter.txt -- permission denied
+
+	chmod u+x peter.txt
+
+	cat peter.txt <----allowed
+
+
+2. write to a file
+
+	chmod u-w peter.txt
+
+	cat >> peter.txt -- permission denied
+
+	vi peter.txt --- can read, but cant write
+			 if the folder owned by the same owner of the file
+			 then :wq! can override the missing write permission
+			 - other users are not allowed to do the same
+
+	rm peter.txt -- allowed only if the enclosing folder has the w permission
+
+
+3. execute a file
+
+	cat myscript.sh
+		cal
+		date
+		echo "hello"
+	^d
+
+
+	try to run file as if a command
+
+	./myscript.sh <- denied to run
+
+	chmod u+x myscript.sh
+
+	./myscript.sh <-- running
+
+------------------
+4. read a folder
+	
+	mkdir project
+	cat > project/a
+	cat > project/b
+
+	ls -ld project -- to see the permissions
+
+	chmod u-r project
+
+	ls -l project <-- denied to read the folder
+
+5. write to a folder
+
+	chmod u-w project
+
+	now u cannot create any file/subfolder in side project folder
+
+	chmod u+x project --- all changes possible inside this folder
+
+
+6. execute a folder
+
+	chmod u-x project
+
+	cd project <-- permission denied to enter into this folder
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+	
 
 
  
