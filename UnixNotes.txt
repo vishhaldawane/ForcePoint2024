@@ -17,6 +17,8 @@
 Day2 Agenda :
 	6. Carry forward the VI editor
 	7. File permissions
+
+Day3 Agenda:
 	8. File Links
 		soft and hard link
 	9. Various filters
@@ -682,50 +684,388 @@ umask
 				-w- -w- -w- 	
 
 
+		     user	
+		      |group
+		      ||other
+		      |||
+		chmod 000 file/directory
+		      754
+		      |||
+		    rwx|r--
+		      r-x
+		
 ------------------------------------
 
 
 
 
 
+	File links
+
+		link = connection between two entities
+
+		A <-----> B
+		|	  |
+		file1	file2
+
+			
+
+	Soft link					Hard Link
+	|						|
+	1. symbolic link				Hard Link
+	2. sym link					-
+	3. short cut in windows
+
+
+			ThisPC
+			|
+		-------------------
+		|
+		C
+		|
+	------------------
+	|	|
+	Users
+	|
+	Amit
+	|
+	----------------------------------
+	|		|		|
+	Documents	Downloads	Desktop
+	|				sal.txt <== short cut file.lnk
+	office
+	|
+	---------
+	|
+	inbox
+	|
+	bank
+	|
+	salary.xtt
+
+
+
+		Soft link
+		-----------
+		1. it is an extra file
+		2. it holds the TARGET PATH of a file or a directory
+		3. the size of a softlink is equal to the number of characters
+		   in the TARGET PATH
+		4. a soft link to a file - operate all file commands over it
+		5. a soft link to a directory - operate all directory commands over it
+		6. if a TARGET is lost or renamed, then the soft link is broken
+		7. on restoring the TARGET, the softlink is also restored
+		8. on deletion of softlink, TARGET remain safe
+
+		9. ln -s office/outbox/vendors  
+			in above command the soft link name is missing
+			hence it would carry the leaf node name as of the soft linkname
+			ie vendors <-- would be the soft linkname
+
+		10. if soft links are moved from one location to other location, they
+		    are broken, hence use ABSOLUTE PATH ( with / ) for portable links
+		11. soft link can point across the partition
+			eg. /Volumes/NO_NAME/SSPY/Arpan <-- is a folder on USB DRIVE
+
+		ln -s /Volumes/NO_NAME/SSPY/Arpan devotion
+			devotion is a soft link pointing to the USB DRIVE's FOLDER
+
+			if the USB is ejected, softlink is broken
+			
+			
+
+			/
+			|
+			home
+			|
+			user
+			|
+		-----------------
+		|
+		heart
+		|	ln -s heart heart/heart
+		|	ln -s /home/user/heart  heart/hrt
+		|
+		l heart -> heart
+		l hrt   -> /home/user/heart
+
+
+
+			/
+			|
+		-------------------
+		|
+		home
+		|
+		user
+		|
+		------------------
+		|		|
+		office		soft link file name is here
+		|		ln -s  office/inbox/bank/icici.txt  mybank.txt
+	-----------------	|
+	|			cat mybank.txt
+	inbox			ln -s office/inbox/projects projs
+	|
+	-----------
+	|	|
+	bank	projects
+	|	
+	icici.txt
+
+
+
+	pwd -P <-- shows the actual [P]hysical folder
+
 	
 
 
 
+	Hard link
+	-----------
+
+		- nothing to do with soft link
+
+		- hard link is NOT an extra file
+
+		- it shares the same i node of the existing file
+
+		- hard link does not work for folders
+
+		- hard cannot span file system
+
+		- hard link has no concern to the TARGET PATH, but with the inode
+		- soft link has something to do with the TARGET PATH and not the inode
+			
+
+			/
+			|
+		--------------------
+			|
+			home
+			|		
+		----------------
+		|		|
+		rajesh		ramesh
+		|		|
+		data.txt	data.txt
+		rwxr-xr-x	rwxr-xr-x
 
 
+	ln /home/rajesh/data.txt /home/ramesh/data.txt
 
 
+-------------------------------------------------
+
+Various Filters
 
 
+	Filter = convert the output of a command into an input 
+		to another command
 
 
+	1. >    output
 
+		cat > filename
+		always overwrite the existing file
 
+	2. >>	append
 
+		cat >> filename
+			append new line at the end of the file
 
+	3. <	input
+		
+		cat < filename
+		mail peter
+				
 
-
+	4. |	conversion
 	
+		cmd1 | cmd2
+
+		convert the output of cmd1 as an input to cmd2
+		and ultimate output of cmd2 is produced
+
+
+
+	1. wc
+
+		line count
+		word count
+		character count
+
+
+		info ls > newfile.txt
+		wc newfile.txt
+
+		wc -l
+		wc -w
+		wc -c
+
+		ls -l | wc -l
+
+		name="chandrashekhar"
+		echo $name | wc -l
+
+		para="hello
+		hi
+		how are you"
+
+		echo "$para" | wc -l
+
+	2. head
+
+		extract top 10 lines - by default - from a file/input
+		- oldest log can be seen 
+	
+		head -n 5 newfile.txt
+		cat -n newfile.txt | head 
+		cat -n newfile.txt | head -n 5
+		cat -n newfile.txt | head -n 15
+
+		- ls -ltr | head -n 5
+
+
+	3. tail
+		
+		extract bottom 10 lines - by default - from a file/input
+		- latest log can be seen 
+	
+		tail -n 5 newfile.txt
+		cat -n newfile.txt | tail 
+		cat -n newfile.txt | tail -n 5
+		cat -n newfile.txt | tail -n 15
+
+		- ls -ltr | tail -n 5
+
+
+	4. tr
+
+		translate characters
+
+		tr a x
+		tr abc xyz
+		tr abcdefg xyz
+		
+		tr abc xyz < emp.lst
+
+	5. cut
+
+		cut the file vertically
+
+		default delimiter is TAB
+
+		cut -f 1 salary.txt
+		cut -f 1,2,5 salary.txt
+
+		cut -d "|" -f1 emp.lst
+
+			-d to specity custom delimiter
+
+		
+		ls -l | cut -d  " " -f1
+
+		ls -l | tr -s  " " | cut -d  " " -f1,9
+
+		ls -l | tr -s " " | cut -d " " -f1,9 | tail -n 1
+		ls -l | tr -s " " | cut -d " " -f1,9 | tail -n 1 | cut -d " " -f1
+  		ls -l | tr -s " " | cut -d " " -f1,9 | tail -n 1 | cut -d " " -f2
+  		PERM=`ls -l | tr -s " " | cut -d " " -f1,9 | tail -n 1 | cut -d " " -f1`
+  		FILE=`ls -l | tr -s " " | cut -d " " -f1,9 | tail -n 1 | cut -d " " -f2`
+  		echo Permission of $FILE is $PERM
+
+	6. grep
+
+		global "regular expression" print
+
+
+		grep manager emp.lst
+		grep gupta emp.lst
+		grep man emp.lst
+		
+		line begin with man
+		grep "^man" emp.lst
+
+		word begin with man
+		grep "\<man" emp.lst
+
+		word end with man
+		grep "man\>" emp.lst
+
+		grep "\<gupta" emplst
+		grep "gupta\>" emp.lst
+
+		whole word
+		grep "\<gupta\>" emp.lst
+		
+		with option -w - whole word
+		grep -w gupta emp.lst
+
+		ignore case
+		grep -i gupta emp.lst
+
+		ignore case with whole word
+		grep -iw gupta emp.lst
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		
 	
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
