@@ -3,7 +3,7 @@
 
 			Unix Shell Scripting
 
-
+TUE
  Day1 Agenda :
 
 	1. Introduction to Unix/Linux
@@ -13,16 +13,35 @@
 	4. Basic commands to deal with Files
 	5. Basic commands to deal with directories
 	6. The Vi editor
-
+WED
 Day2 Agenda :
 	6. Carry forward the VI editor
 	7. File permissions
-
+THU
 Day3 Agenda:
 	8. File Links
 		soft and hard link
 	9. Various filters
 		10 filters
+
+FRI
+Holiday
+
+MON
+Day 4 Agenda:
+
+	10. Shell Environment
+	11. Environment variables
+	12. the export statement
+	13. Shell scripting
+
+
+
+TUE
+
+WED
+
+THU
 
 
 
@@ -1008,6 +1027,136 @@ Various Filters
 		ignore case with whole word
 		grep -iw gupta emp.lst
 		
+
+
+		line number of the found pattern
+		grep -n man emp.lst
+
+		count of lines across which the pattern is found
+		grep -c man emp.lst
+
+		show only the pattern if found
+		grep -o man emp.lst
+
+		grep -o man emp.lst | wc -l
+
+
+		SOUNDs same - but spelling is different
+
+		1234567
+		sax ena
+		saksena
+
+		sa[xk]s*ena
+
+
+		s* means character preceeding * should be matched
+		ZERO or more times
+
+
+		12 3 4 5 6 7 8
+		ag a r   w a l
+		ag g a r w a l
+		ag r a   w a l
+
+		ag[agr][ra]r*wal
+
+
+
+	grep		fgrep			egrep
+==================================================================
+	sa[kx]s*ena	-			"sa(ks|x)ena" 
+			
+------------------------------------------------------------------
+	g.m.		g.m.			-
+	|		|
+	will search	search g.m.
+	g.m. and	as it is
+	game too	(literal)
+
+------------------------------------------------------------------
+	grep -e sharma	-			egrep "sharma|gupta"
+	-e gupta 
+	emp.lst
+------------------------------------------------------------------
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	fgrep - fixed string grep
+
+		grep g.m. emp.lst -- searches game too
+
+		grep g\.m\. emp.lst
+
+
+
+
+
+	H/w
+	|
+	Kernel
+	|
+	Shell <-- interactive program 
+	|		(like a web browser to surf on the internet)
+	User - english
+	  - ls
+	  - date
+ 	  - cal
+
+
+		Stephen Bourne - The Bourne shell
+
+		/bin/sh
+
+
+		David Korn - The Korn Shell
+
+		/bin/ksh
+
+		Bill Joy - The C Shell
+
+		/bin/csh
+
+
+		The Bourne Again Shell
+
+		/bin/bash
+
+
+
+
+	Shell Environement 		
+
+
+
+		env				set
+		|				|
+		global env			local env
+		of the system			of the current user
+
+						A=100
+						export A
+		after export A
+		the variable A
+		is in env and 
+		set too
 
 
 
