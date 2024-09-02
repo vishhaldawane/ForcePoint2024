@@ -1162,6 +1162,143 @@ Various Filters
 
 
 
+		$ <-- this is your current shell
+		$ A=100 <-- this variable is in the current shell
+		$
+		$ bash <-- after hitting this line, a new bash (child)
+				is created 
+
+		$ now you are in a child shell, where A=100 is unavailable
+
+		
+ ps - process status - same as task manager in windows
+
+
+	echo $$ -- means the current process id [ active ]
+
+		
+
+	1. ps
+	2. echo $$
+	3. echo $SHLVL
+	4. A=100
+
+
+
+
+				server - init - 0
+				|		|
+				|		sshd - server process
+				|		  100
+				|
+		------------------------------------
+		|		|		|
+		terminal1	terminal2	terminal3
+		|client sshd	|client sshd	| client sshd
+		|  100		| 100		| 100 <-- ppid
+		|  300		| 400		| 500 <-- pids
+		|		|		|
+		login		login		login
+		user/pass	user/pass	user/pass
+		|profile	|profile	|profile
+		| A=100
+		shell		shell		shell
+		 300		400		500
+		 600		700		800 <-- pid
+		A=10		A=20		A=30
+
+
+
+	SCRIPTING				PROGRAMMING LANGUAGE
+	-----------				-------------
+	  X					C   prog language
+	  X					C++ prog lang
+	 Java Scripting				java prog lang
+	 Unix shell scripting			X
+	 perl scripting				X		
+	 PL-SQL Scripting			X
+
+	1. NA					1. rich set of data types
+	2. NA					2. rich set of operators
+	3. filters 				3. rich set of library functions
+	4. very few				4. complex math expression	
+	5. no gui				5. GUI 
+	6. NA					6. data structures, array
+						   classes, struct, stack
+						   queue, tree, hashtable,
+						   graph
+	7. NA					7. Algorithms
+	8. NA					8. efficient file handling
+	9.					9. mission critical apps
+	10.control the developed apps		10. develop
+
+						wc.c
+						grep.c
+						cut.c
+						head.c
+						logic.c
+	wc
+	grep
+	head
+	upload
+	start a server
+	stop a particular service
+	prevent this
+	prevent that
+	scan this 
+	..
+	..
+	..
+
+
+
+
+	
+	Shell Scripting
+	-------------------
+
+
+	scripting is used for automation
+
+
+
+	write a simple script to enter a filename
+	and display all the hard links of it
+
+
+	cat > rajesh
+	 data
+	^d
+
+	ln rajesh raj
+	ln rajesh raja
+
+	-------
+
+	Enter filename : rajesh
+	Following are the hard links of rajesh
+	raj
+	raja
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
