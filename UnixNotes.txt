@@ -1,4 +1,4 @@
-
+sbs
 
 
 			Unix Shell Scripting
@@ -36,11 +36,14 @@ Day 5 Agenda:
 	15. Command line arguments
 	16. Functions
 	17. Interscript communication
-	18. Profiles
+	18. sed filter
 
-WED
+Day 6 Agenda
 
-THU
+	19. Profiles
+
+Day 7 Agenda
+
 
 
 
@@ -1280,6 +1283,162 @@ Various Filters
 	raja
 	
 
+
+	Ways to run the script
+
+
+	1. ./First.sh
+		a. spawns a new shell
+
+	2. . ./First.sh
+		a. DOES NOT spawns a new shell
+
+	3. /etc
+	   /home/user/First.sh
+		a. spawns a new shell
+
+	4. /etc
+	   . /home/user/First.sh
+		a. DOES NOT spawns a new shell
+
+
+Command line arguments
+-----------------------
+
+
+	Passing parameters to the script at runtime
+
+
+		   <--------$*------->
+	$ First.sh jack jane 120 45.55
+	    $0	    $1   $2   $3  $4
+		    <-- count is $#-->
+
+
+
+Functions
+-----------
+
+	- reusable code
+
+	
+C/C++/Java
+	returnType	functioName(arguments)
+	{
+		return value;
+	}
+
+Unix
+-----
+	function functionName()
+	{
+		code
+
+
+	}
+
+	functionName
+
+
+
+
+
+
+	SED - stream editor - to perform CRUD operation 
+		without opening file in interactive mode
+
+
+	vi			grep			sed
+	|			|			|
+create	vi emp.lst		NO			YES
+read	vi emp.lst		sharma			/sharma
+update	vi emp.lst		NO			YES
+delete	vi emp.lst		NO			YES
+	|			|			|
+	INTERACTIVE/DEPENDS			NON-interactive
+	UPON USER'S ACTIVE			program / so that
+	INPUT					 it can be used
+						without user's 
+						presence/scripts can
+						use it
+
+
+
+	sed 'action' filelist
+
+		- line processor
+
+SEARCH LINES
+
+	1)	sed '' emp.lst
+		
+			- if no action provided inside '' then
+			- default action is to p - print
+
+	2) sed 'p' emp.lst
+
+			- default print + 'p' explicit p 
+
+	3) sed '5p' emp.lst
+
+			- default print for all lines
+			- + 5p means 5th line also to be printed
+
+	4) sed -n '5p' emp.lst
+
+			- -n would ignore the default print [ supress it ]
+			- '5p' getting only line 5
+
+			head -n 5 emp.lst | tail -n 1
+
+	5) sed -n '3,5p' emp.lst
+
+			- print lines from 3 to 5 
+
+	6) sed -n -e '5p' -e '7p' -e '10p' emp.lst
+	6) cat -n emp.lst | sed -n -e '5p' -e '7p' -e '10p' 
+	6) cat -n emp.lst | sed -n -e '2p' -e '5,7p' -e '10p' -e '$p' 
+
+
+SEARCH PATTERN
+
+	7) sed -n '/sharma/p' emp.lst
+	8) sed -n -e '/manager/p' -e '/gupta/p' -e '/sharma/p' emp.lst
+
+DELETE PATTERN
+
+	9) sed -n '/manager/d' emp.lst <-- delete pattern matched lines
+	10) sed -n '5,8d' emp.lst
+	11) cat -n emp.lst | sed -n '5,8d' <-- delete ranged lines
+	12) cp emp.lst emp.lst.1
+
+	13) sed -i.bak '5,8d' emp.lst
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	
 
 
 
