@@ -3,8 +3,7 @@
 
 			Unix Shell Scripting
 
-TUE
- Day1 Agenda :
+Day1 Agenda :
 
 	1. Introduction to Unix/Linux
 	2. The Big picture
@@ -13,21 +12,17 @@ TUE
 	4. Basic commands to deal with Files
 	5. Basic commands to deal with directories
 	6. The Vi editor
-WED
 Day2 Agenda :
 	6. Carry forward the VI editor
 	7. File permissions
-THU
 Day3 Agenda:
 	8. File Links
 		soft and hard link
 	9. Various filters
 		10 filters
 
-FRI
 Holiday
 
-MON
 Day 4 Agenda:
 
 	10. Shell Environment
@@ -35,9 +30,13 @@ Day 4 Agenda:
 	12. the export statement
 	13. Shell scripting
 
+Day 5 Agenda:
 
-
-TUE
+	14. More on scripting
+	15. Command line arguments
+	16. Functions
+	17. Interscript communication
+	18. Profiles
 
 WED
 
@@ -1279,7 +1278,7 @@ Various Filters
 	Following are the hard links of rajesh
 	raj
 	raja
-
+	
 
 
 
