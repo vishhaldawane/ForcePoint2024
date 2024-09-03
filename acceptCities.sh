@@ -35,3 +35,9 @@ do
 	echo "CITY is : $i"
 done
 
+for((i=1;i<=50;i++))
+do
+	echo "value of i is $i"
+done
+
+
