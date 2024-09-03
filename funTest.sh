@@ -13,8 +13,21 @@ function addition()
   echo "---------------------------"
 }
 
+function subtraction()
+{
+  echo "Subtraction function invoked with $# arguments "
+  sum=0
+  for i in $*
+  do
+    sum=`expr $sum - $i`
+  done
+  echo "Subtraction is : $sum"
+  echo "---------------------------"
 echo "Main started"
-addition 10 20
-addition 30 40 50
-addition 60 70 80 90
+addition 20 10
+addition 150 40 30
+addition 160 20 10 5
+subtraction 20 10
+subtraction 150 40 30
+subtraction  160 20 10 5
 echo "Main over"
