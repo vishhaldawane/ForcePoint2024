@@ -6,6 +6,25 @@ echo "User:$LOGNAME executed $0 on $HOSTNAME at `date`" >> script.log
 #	echo "only root users can run this script"
 #	exit
 #fi
+function createUser()
+{
+	echo "Enter user id       : "; read userid
+	echo "Enter user name     : "; read username
+	echo "Enter user password : "; read userpass
+	echo "Enter user location : "; read userloc
+	#sed  "$ a\ $userid|$username|$userpass|$userloc \ " user.lst
+	sed -i.bak "$ a\ 
+		$userid|$username|$userpass|$userloc \
+	
+		" user.lst
+
+	if [ $? -eq 0 ]
+	then
+		echo "User added"
+	else
+		echo "User addition error"
+	fi
+}
 
 choice=0
 while [ $choice -ne 6 ]
@@ -29,7 +48,9 @@ do
 	fi
 
 	case $choice in
-		1) echo "User Creation" ;;
+		1) echo "User Creation" 
+			createUser # function is invoked...
+			;;
 		2) echo "View User By ID" ;;
 		3) echo "View All Users" ;;
 		4) echo "Modify User";;
