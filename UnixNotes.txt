@@ -1,5 +1,38 @@
 
 
+	Jack Canfield
+
+7 Habits of Highly Effective People
+
+	U cannot decide your future,
+	But you can decide your habits,
+	and your habits would decide your future.
+
+
+	private victory	
+
+1. Be Proactive 
+2. Put First Thing First
+	clock and compass
+ 
+3. Begin with the END in mind
+ 
+
+4 - Think WIN-WIN 
+
+	public victory
+5. Seek first to understand then to be understood
+6. Synergy
+7. Sharpen the SAW
+
+
+
+
+
+
+
+
+
 			Unix Shell Scripting
 
 Day1 Agenda :
@@ -1502,6 +1535,32 @@ unalias c ---- revoke the alias
 
 
 
+
+
+	first.c
+	|
+	gcc -c first.c
+			|
+		  first.o <-- its an object file after the compilation
+			|
+	gcc -o first.out first.o
+			|
+		it is an executable file generated from first.o
+				|
+			no need to grant x permission since it is auto
+			granted by the gcc compiler and not the unix OS
+
+	./first.out
+		|
+		rename it
+	mv first.out first
+				|
+				./first
+					|
+				chmod ugo-x first
+				|
+				./first <-- permission denied
+EXECUTABLENESS OF AN EXECUTABLE FILE CAN BE SWITCHED OFF
 
 
 
