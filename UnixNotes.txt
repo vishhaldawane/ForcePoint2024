@@ -1483,6 +1483,22 @@ unalias c ---- revoke the alias
 
 
 
+ ls -l script.sh
+  rw- --- --- <--- no execute permission - NO NEED OF AUTHENTICATION
+
+ bash script.sh <-- still we can run this without x perm
+
+ script.sh
+	|
+	if [ $UID -ne 0 ]
+	then
+		echo "only root can run this.."
+		exit
+	fi
+	..
+	..
+	..
+	..
 
 
 
