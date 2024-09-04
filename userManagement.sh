@@ -12,11 +12,12 @@ function createUser()
 	echo "Enter user name     : "; read username
 	echo "Enter user password : "; read userpass
 	echo "Enter user location : "; read userloc
-	#sed  "$ a\ $userid|$username|$userpass|$userloc \ " user.lst
-	sed -i.bak "$ a\ 
-		$userid|$username|$userpass|$userloc \
-	
-		" user.lst
+	sed  "$ a $userid|$username|$userpass|$userloc" user.lst
+
+	#sed -i.bak "$ a\ 
+	#	$userid|$username|$userpass|$userloc \
+	#
+	#	" user.lst
 
 	if [ $? -eq 0 ]
 	then
@@ -25,7 +26,22 @@ function createUser()
 		echo "User addition error"
 	fi
 }
-
+function viewUser()
+{
+	echo "Enter user id to search : "
+	read userid
+	DATA=`grep ^$userid user.lst`
+	if [ $? -eq 0 ]
+	then
+		echo "User found"
+		echo "USER ID   : `echo $DATA | cut -d "|" -f1`"
+		echo "USER NAME : `echo $DATA | cut -d "|" -f2`"
+		echo "USER LOC  : `echo $DATA | cut -d "|" -f4`"
+	else
+		echo "User not found"
+	fi
+	
+}
 choice=0
 while [ $choice -ne 6 ]
 do
@@ -51,7 +67,9 @@ do
 		1) echo "User Creation" 
 			createUser # function is invoked...
 			;;
-		2) echo "View User By ID" ;;
+		2) echo "View User By ID" 
+			viewUser
+			;;
 		3) echo "View All Users" ;;
 		4) echo "Modify User";;
 		5) echo "Delete User By Id" ;;
