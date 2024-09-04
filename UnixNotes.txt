@@ -1,4 +1,3 @@
-sbs
 
 
 			Unix Shell Scripting
@@ -40,10 +39,16 @@ Day 5 Agenda:
 
 Day 6 Agenda
 
-	19. Profiles
+	18. more on sed
+	19. sort filter, uniq
+	20. arrays
+	21. awk filter
+	22. awk scripting
 
 Day 7 Agenda
-
+	23. Profiles
+	24. File archiving
+	25. File compression
 
 
 
@@ -303,7 +308,7 @@ Unix file system structure [ internatinal standard structure ]
 
 	OUT project	SO Project
 	|		|
-	excel.c		formulas.c
+:	excel.c		formulas.c
 	|		|
 	.o		.o
 	|		|
@@ -1405,7 +1410,7 @@ SEARCH PATTERN
 	7) sed -n '/sharma/p' emp.lst
 	8) sed -n -e '/manager/p' -e '/gupta/p' -e '/sharma/p' emp.lst
 
-DELETE PATTERN
+DELETE by PATTERN or LINE range
 
 	9) sed -n '/manager/d' emp.lst <-- delete pattern matched lines
 	10) sed -n '5,8d' emp.lst
@@ -1413,9 +1418,74 @@ DELETE PATTERN
 	12) cp emp.lst emp.lst.1
 
 	13) sed -i.bak '5,8d' emp.lst
+			emp.lst.bak would have old records
+			emp.lst would have 5,8 deleted from it(updated)
 
+APPEND DATA
+	
+	14) sed '1a \
+		111|sachin t|cricketer|cricket|12/Dec/99|8888\
+		' emp.lst
+		goes to the first line and add the above record
+		as a 2nd record
+
+	sed '$a \
+		111|sachin t|cricketer|cricket|12/Dec/99|8888\
+		' emp.lst
+		goes to the last line and appends the above record
+
+INSERT DATA
+
+	sed '1i \
+		111|sachin t|cricketer|cricket|12/Dec/99|8888\
+	    ' emp.lst
+
+		goes to the 1st record, and inserts the above
+		data above the 1st record
+
+	sed -i '1i \
+		111|sachin t|cricketer|cricket|12/Dec/99|8888\
+	    ' emp.lst
+
+		above -i is the OPTION - to update the file
+		1i is an action
+
+
+	sed '/director/w dir1.lst' emp.lst
+
+		searches director and writes them to a file dir1.lst
+
+	CRUD operation is over.....
+
+	so lets write a script to SHOW a MENU
+
+
+		USER MANAGEMENT
+		----------------
+		1. Create User
+		2. View User By ID
+		3. View All Users
+		4. Modify User
+		5. Delete User By ID
+		-----------------
+		6. Exit	
 
 	
+	
+alias -- to view all the aliases	
+-------------
+alias c='clear'
+alias ll='ls -l'
+alias lsd='ls -l | grep ^d'
+alias lsl='ls -l | grep ^l'
+
+unalias c ---- revoke the alias
+
+
+
+
+
+
 
 
 
