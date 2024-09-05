@@ -737,7 +737,7 @@ umask
 			----------------------------------------		
 	bit	BASE		110 110 110	111 111 111 
 				
-   &	bit	~UMASK		010 010 010     010 010 010
+   &	bit	~UMASK		010 010 010     010 010 010:
 			----------------------------------------
 		DEFAULT		010 010 010 	010 010 010
 				-w- -w- -w- 	
@@ -1600,112 +1600,25 @@ multi column sort
 
 
 
-
-	
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Arrays:
+
+	# C syntax : int ary[]={10,20,30};
+
+	students=(Pradhyumn Vishal Chaitanya Shreya Khetan)
+	students=(*.sh)
+	fuzzy=(jack 10 45.67 y or n please pick up the call 12 230)
+
+	echo "Length  of array is : ${#students[*]}"
+	echo "Content of array is : ${students[*]}"
+	echo "-----------------"
+	echo "1st element of array is : ${students[0]}"
+	echo "2nd element of array is : ${students[1]}"
+	echo "3rd element of array is : ${students[2]}"
+	echo "4th element of array is : ${students[3]}"
+	echo "5th element of array is : ${students[4]}"
+	echo "---------------"
+
+-------------------------------
 
 
 

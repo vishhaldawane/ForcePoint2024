@@ -1,0 +1,7 @@
+10 Jack Java 89.00
+20  Jill  Java  88.89
+30	Janet	Oracle	87.45
+40		Julie		Unix		86.56
+	50	Julia	Oracle	80.54
+ 60 Karl Java 90.00
+70	 Michael 	Oracle  	92.00
