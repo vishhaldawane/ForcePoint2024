@@ -4,7 +4,8 @@
 # C syntax : int ary[]={10,20,30};
 
 
-students=(Pradhyumn Vishal Chaitanya Shreya Khetan)
+#students=(Pradhyumn Vishal Chaitanya Shreya Khetan)
+students=(*.sh)
 
 
 echo "Length  of array is : ${#students[*]}"
@@ -21,7 +22,15 @@ lengthOfStudents=${#students[*]}
 x=0
 while [ $x -lt $lengthOfStudents ]
 do
-	echo "value at $x position : ${students[$x]}"
+#	echo "value at $x position : ${students[$x]}"
+	filename=${students[$x]} 
+	if [ ! -x $filename ]
+	then
+		echo "File does not execute permission    : $filename"
+	else
+		echo "File already has execute permission : $filename"
+		# ./$filename # to run it
+	fi
 	x=`expr $x + 1 `  # x=((x+1))
 done
 
