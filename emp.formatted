@@ -1,0 +1,104 @@
+
+
+ --- EMPLOYEE INFORMATION --- 
+
+
+EMPLOYEE RECORD  : 1
+EMPLOYEE NUMBER  : 111
+EMPLOYEE NAME    : sachin t
+EMPLOYEE DESG    : cricketer
+EMPLOYEE DEPT    : cricket
+EMPLOYEE JOINING : 12/Dec/99
+EMPLOYEE SALARY  :      8888.00
+--------------------------------
+EMPLOYEE RECORD  : 2
+EMPLOYEE NUMBER  : 2233
+EMPLOYEE NAME    : v.k. mAdhavan
+EMPLOYEE DESG    : salesman
+EMPLOYEE DEPT    : sales
+EMPLOYEE JOINING : 12/Dec/52
+EMPLOYEE SALARY  :      6000.00
+--------------------------------
+EMPLOYEE RECORD  : 3
+EMPLOYEE NUMBER  : 9876
+EMPLOYEE NAME    : suman sharma
+EMPLOYEE DESG    : director
+EMPLOYEE DEPT    : production
+EMPLOYEE JOINING : 12/Mar/50
+EMPLOYEE SALARY  :      7000.00
+--------------------------------
+EMPLOYEE RECORD  : 4
+EMPLOYEE NUMBER  : 5678
+EMPLOYEE NAME    : sumit chakrobarty
+EMPLOYEE DESG    : d.g.m.
+EMPLOYEE DEPT    : marketing
+EMPLOYEE JOINING : 19/Apr/43
+EMPLOYEE SALARY  :      6000.00
+--------------------------------
+EMPLOYEE RECORD  : 5
+EMPLOYEE NUMBER  : 2365
+EMPLOYEE NAME    : walchandt sengupta
+EMPLOYEE DESG    : manager
+EMPLOYEE DEPT    : personnel
+EMPLOYEE JOINING : 11/May/47
+EMPLOYEE SALARY  :      7800.00
+--------------------------------
+EMPLOYEE RECORD  : 6
+EMPLOYEE NUMBER  : 4290
+EMPLOYEE NAME    : manjit agrawal
+EMPLOYEE DESG    : executive
+EMPLOYEE DEPT    : production
+EMPLOYEE JOINING : 07/Sep/50
+EMPLOYEE SALARY  :      6000.00
+--------------------------------
+EMPLOYEE RECORD  : 7
+EMPLOYEE NUMBER  : 2476
+EMPLOYEE NAME    : Game aggarwal
+EMPLOYEE DESG    : salesman
+EMPLOYEE DEPT    : sales
+EMPLOYEE JOINING : 01/May/59
+EMPLOYEE SALARY  :      5000.00
+--------------------------------
+EMPLOYEE RECORD  : 8
+EMPLOYEE NUMBER  : 6500
+EMPLOYEE NAME    : walt GUPTA
+EMPLOYEE DESG    : director
+EMPLOYEE DEPT    : marketing
+EMPLOYEE JOINING : 26/Sep/45
+EMPLOYEE SALARY  :       600.00
+--------------------------------
+EMPLOYEE RECORD  : 9
+EMPLOYEE NUMBER  : 212
+EMPLOYEE NAME    : Thyam saksena
+EMPLOYEE DESG    : d.g.m.
+EMPLOYEE DEPT    : accounts
+EMPLOYEE JOINING : 12/Dec/55
+EMPLOYEE SALARY  :      6000.00
+--------------------------------
+EMPLOYEE RECORD  : 10
+EMPLOYEE NUMBER  : 3564
+EMPLOYEE NAME    : sudhir agarwal
+EMPLOYEE DESG    : tester
+EMPLOYEE DEPT    : personnel
+EMPLOYEE JOINING : 12/Jan/88
+EMPLOYEE SALARY  :      8300.00
+--------------------------------
+EMPLOYEE RECORD  : 11
+EMPLOYEE NUMBER  : 999
+EMPLOYEE NAME    : vishal saxena
+EMPLOYEE DESG    : trainer
+EMPLOYEE DEPT    : training
+EMPLOYEE JOINING : 14/aug/98
+EMPLOYEE SALARY  :      9999.00
+--------------------------------
+EMPLOYEE RECORD  : 12
+EMPLOYEE NUMBER  : 199
+EMPLOYEE NAME    : vishal dawane
+EMPLOYEE DESG    : trainer
+EMPLOYEE DEPT    : training
+EMPLOYEE JOINING : 12/Aug/99
+EMPLOYEE SALARY  :      8999.00
+--------------------------------
+
+ --- EMPLOYEE COUNT : 12--- 
+
