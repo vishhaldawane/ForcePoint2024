@@ -1621,7 +1621,31 @@ Arrays:
 -------------------------------
 
 
+AWK
 
+		Aho Weinberger Kernighan
+
+		- written in C language
+
+		
+		default delimiter in AWK is WHITESPACE
+
+  awk '{print $1}' data.txt
+  awk '{print $1,$2,$3,$4}' data.txt
+  awk '{print $1,$2,$3,$4}' data.txt
+  awk -F="|" '{print $1}' emp.lst
+  awk FS="|" '{print $1}' emp.lst
+  man awk
+  awk -F "|" '{print $1}' emp.lst
+  awk -F "|" '{print $2}' emp.lst
+  awk -F "|" '{print $3}' emp.lst
+  awk -F "|" '{print $3,$2,$1}' emp.lst
+  awk '{print $1}' data.txt
+  awk -F "|" '{print $3,$2,$1}' emp.lst
+  awk -F "|" '{ if ($6>3000) print $3,$2,$1}' emp.lst
+  awk -F "|" '{ if ($6>8000) print $1,$2,$3,$6}' emp.lst
+  awk -F "|" '{ if ($3=="trainer" && $6>8000) print $1,$2,$3,$6}' emp.lst
+awk -F "|" '{ if ($6>5000) printf("\n|%10d|%-20s|%-20s|%12.2f|\n",$1,$2,$3,$6) }' emp.lst
 
 
 
