@@ -1648,4 +1648,106 @@ AWK
 awk -F "|" '{ if ($6>5000) printf("\n|%10d|%-20s|%-20s|%12.2f|\n",$1,$2,$3,$6) }' emp.lst
 
 
+ps -ef
+	all processes status can be seen
+
+
+
+df == shows the disk free status
+
+du - directory usage
+
+	du /etc
+	du -h /etc <-- human readable form ie KB, MB, GB etc
+
+	du -sh /etc <-- show the summary report : size of /etc
+
+
+
+Profile
+----------
+
+	file that runs during user login time 
+	is known as user profile
+
+	/home/user/.bash_profile
+
+
+	a file that runs when a shell is assigned to the user
+	is known as shell's profile
+
+
+		bourne 		korn			c shell
+		|			|			|
+user	->	.bash_profile	.profile		.profile
+shell->   .shrc		.kshrc		.cshrc
+		.bashrc
+
+system	/etc/bashrc
+			 |
+		  global settings across all users are issued from here
+
+
+	rc = run commands
+
+				/
+				|
+		----------------------
+		|			|
+		etc			home
+		|			|
+		bashrc	-----------------
+		[global]		|		|
+				rajesh		ramesh
+				|			|
+				.bashrc		.bashrc <-- local shell settings
+				.bash_profile	.bash_profile <-- user's profile
+				.vimrc		.vimrc <-- vi's profile
+
+
+
+
+	File archieving
+
+		1.	du -sh /home/user
+
+		2. tar -cvf user.tar /home/user
+					|			|
+				file to create <--from this folder
+
+			-c create
+			-v verbose
+			-f file to create
+	
+		3. view the archive
+
+			tar -tvf user.tar
+
+			- table of contents
+	
+File Compression
+
+	1) tar -cvf CPP.tar CPP
+
+	2)	bzip2  CPP.tar
+				|
+				created a compressed file [ known as tarball]
+				|
+				CPP.tar.bz2
+				|
+			upload/copy/transfer on net of storage device
+				|
+				transport
+				|
+		CPP.tar.bz2
+			|
+	3)	bunzip2 CPP.tar.bz2
+			|
+		  uncompressed
+			|
+			CPP.tar
+	4)	tar -xvf CPP.tar
+				|
+			CPP folder Extracted	
+
 
