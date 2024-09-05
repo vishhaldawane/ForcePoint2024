@@ -1569,7 +1569,34 @@ EXECUTABLENESS OF AN EXECUTABLE FILE CAN BE SWITCHED OFF
 
 
 
+sort -t "|" -k1n emp.lst
 
+
+	-t field separator
+
+	-k key column
+
+	-k1n  treat first column as numeric
+
+
+sort -t "|" -k2 emp.lst
+
+cut -d "|" -f3 emp.lst | sort | uniq -c
+
+		sort the designations
+		and find out unique records count
+
+multi column sort
+
+	sort -t "|" -k4 -k6n emp.lst
+		above command would consider 4th column to 6th column
+		including 5th column too for sort
+
+
+	sort -t "|" -k4,4 -k6,6n emp.lst
+
+		-k4,4 means all characters only from 4th column
+		same for -k6,6
 
 
 
